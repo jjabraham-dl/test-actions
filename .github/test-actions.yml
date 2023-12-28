@@ -1,0 +1,15 @@
+name: test-actions
+run-name: ${{ github.actor }} says hi!
+on: [push]
+jobs:
+  check-node-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - run: npm -v
+      - run: npm i -g bats
+      - run: bats -v
+
